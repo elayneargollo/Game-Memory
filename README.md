@@ -18,5 +18,12 @@ Boa Sorte !!!!
 <img src="https://github.com/elayneargollo/Game-Memory/blob/main/src/main/java/images/telaInicial.png"/>
 </br>
 
+### Configuração
+
+Toda a aplicação foi desenvolvida em localhost, portanto, algumas tarefas devem ser executadas antes do jogo começar ... Vamos melhorar na próxima versão ;)
+Primeiro, levante uma imagem do mongoDB com o database "JogoDaMemoria" e a collection "jogador"
+Depois, execute no programa, no pacote de comunicaçao, o server
+Pronto: é só jogar ! 
+
 IP: localhost
 Porta: 11111
