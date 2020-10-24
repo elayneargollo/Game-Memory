@@ -1,17 +1,12 @@
 package ifba.edu.inf015.jogo;
 
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-
-import javax.imageio.stream.ImageInputStream;
 
 import ifba.edu.inf015.comunicacao.Client;
 import ifba.edu.inf015.lib.FileConvert;
@@ -19,6 +14,7 @@ import ifba.edu.inf015.lib.FileConvert;
 @SuppressWarnings("serial")
 public class GameFacil extends Letter {
 
+	@SuppressWarnings("unused")
 	private Image imgFundo = getImgFundo("images/flipper.png");
 
 	public GameFacil(Image imgF, JLabel Label_pont, JLabel cartasViradas, JMenuItem novojogo) {
@@ -66,13 +62,13 @@ public class GameFacil extends Letter {
 
 			if (cont == 1) {
 
-				new Sound().cartaVirando();
+				new Sound().cardTurn();
 				clicaPrimCarta = this;
 			}
 
 			if (cont == 2) {
 
-				new Sound().cartaVirando();
+				new Sound().cardTurn();
 
 				if (this.getPar().isViradaPraFrente()) {
 
@@ -113,7 +109,7 @@ public class GameFacil extends Letter {
 					}
 
 					else {
-						new Sound().vaia();
+						new Sound().boo();
 						JOptionPane.showMessageDialog(null,
 								"Voce precisa estudar" + "\n Sua pontuacao foi: " + Pontuacao(0));
 					}

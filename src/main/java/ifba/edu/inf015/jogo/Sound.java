@@ -1,5 +1,6 @@
 package ifba.edu.inf015.jogo;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.Random;
 
@@ -12,63 +13,56 @@ public class Sound {
 	String musicJogo = null;
 	private int titleMusic[] = {1, 2, 3, 4, 5, 6};
 	private Clip oClip;
-
-	public void cartaVirando() {
-
-		try {
-			String resource = "/audios/turn.wav";
-			
-			InputStream input = getClass().getResourceAsStream(resource);
-
-			oClip = AudioSystem.getClip();
-			AudioInputStream audio = AudioSystem.getAudioInputStream(input);
-			oClip.open(audio);
-			oClip.loop(0); 
-
-		} catch (Exception e) { 
-			e.printStackTrace();
-		}
-	}
 	
-	private void play(String path) {
+	private void play(String path, boolean loop) {
 		try {
 			InputStream input = (InputStream) getClass().getResourceAsStream(path);
+			InputStream bufferedIn = new BufferedInputStream(input);
 			oClip = AudioSystem.getClip();
 
-			AudioInputStream audio = AudioSystem.getAudioInputStream(input);
+			AudioInputStream audio = AudioSystem.getAudioInputStream(bufferedIn);
 
 			oClip.open(audio);
-			oClip.loop(Clip.LOOP_CONTINUOUSLY);
+			
+			if(loop) {
+				oClip.loop(Clip.LOOP_CONTINUOUSLY);
+			}else {
+				oClip.loop(0);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void selecionado() {
-		this.play("/audios/botao.wav");
+	public void buttonSound() {
+		this.play("/audios/botao.wav", false);
+	}
+	
+	public void cardTurn() {
+		this.play("/audios/turn.wav", false);
 	}
 
 	public void erro() {
-		this.play("/audios/erro2.wav");
+		this.play("/audios/erro2.wav", false);
 	}
 
 	public void acerto() {
-		this.play("/audios/acerto.wav");
+		this.play("/audios/acerto.wav", false);
 	}
 
 	public void vitoria() {
-		this.play("/audios/vitoria.wav");
+		this.play("/audios/vitoria.wav", false);
 	}
 
 	public void mainMusic() {
 		String path = "/audios/" + this.getRandom(titleMusic) + ".wav";
 			
-		this.play(path);
+		this.play(path, true);
 	}
 
-	public void turn() {
-		this.play("/audios/acerto.wav");
+	public void point() {
+		this.play("/audios/acerto.wav", false);
 	}
 
 	public void stop() {
@@ -80,8 +74,8 @@ public class Sound {
 		}
 	}
 
-	public void vaia() {
-		this.play("/audios/vaia.wav");
+	public void boo() {
+		this.play("/audios/vaia.wav", false);
 	}
 	
 	public int getRandom(int[] array){

@@ -5,15 +5,9 @@ import java.awt.Color;
 import java.awt.EventQueue;
 
 import java.awt.MenuBar;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.InputStream;
-
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
-import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -40,7 +34,9 @@ public class Login extends JFrame {
 	private JTextField ipServidor;
 	private JTextField portaServidor;
 	private JTextField nomeJogador;
+	@SuppressWarnings("unused")
 	private MenuBar menu;
+	@SuppressWarnings("unused")
 	private Logo loginLogo;
 	private Sound loginMusic;
 
@@ -129,7 +125,7 @@ public class Login extends JFrame {
 		playButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					new Sound().selecionado();
+					new Sound().buttonSound();
 					cliente = new Client(ipServidor.getText(), Integer.parseInt(portaServidor.getText()),
 							nomeJogador.getText());
 					cliente.executa();
