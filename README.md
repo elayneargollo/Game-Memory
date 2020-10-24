@@ -18,5 +18,5 @@ Boa Sorte !!!!
 <img src="https://github.com/elayneargollo/Game-Memory/blob/main/src/main/java/images/telaInicial.png"/>
 </br>
 
-<li>IP: localhost</li>
+IP: localhost
 Porta: 11111
